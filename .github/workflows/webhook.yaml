@@ -1,0 +1,19 @@
+name: JTestWH
+
+# this is for testing the webhook
+
+on:
+ push:
+
+jobs:
+
+ webhook:
+  name: Run Webhook
+  runs-on: ubuntu-20.04
+  steps:
+   - name: distribution
+     uses: distributhor/workflow-webhook@v2
+     env:
+      webhook_url: ${{ secrets.WEBHOOK_URL }}
+      webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+      data: '{ "id": "jtestwh" }'
